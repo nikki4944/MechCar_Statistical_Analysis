@@ -32,5 +32,21 @@ As illustrated in the below image, the variance PSI for Lot 3 is 170.286 which i
 
 ## T-Tests on Suspension Coils
 
+In order to determine if the manufacturing lots are statistically different from the population mean of 1,500 pounds per square inch as determined in the prior summary, I ran t.tests on the suspension coil data set provided by the client.
+
+First, I ran a t.test compairing all the manufacturing lots with the population mean of 1,500 and received a p-value of 0.06 as shown below. Given this result, it is possible to determine that the means are statistically similar, assuming a standard significance level of 0.05.
+
+<img width="414" alt="Screen Shot 2021-08-14 at 8 31 19 PM" src="https://user-images.githubusercontent.com/82982901/129463569-bfabeddd-2e9f-4638-9d6f-714e46203052.png">
+
+In order to run a t.test comparing each individual lot, a small tweak was made to the code used previously. The code in the above image was a paired t.test; however, a t.test which subsets the data for each individual lot is an unpaired t.test and requires the use of the subset argument. As shown below, after running the adjusted t.test code for each lot, it is possible to determine that the means are statistically similar for lots 1 and 2 which have p-values greater than 0.05 but lot 3 has a mean that is not statistically similar with a calculated p-value of .04. 
+
+<img width="512" alt="Screen Shot 2021-08-14 at 8 51 01 PM" src="https://user-images.githubusercontent.com/82982901/129463638-5179ac6d-6645-4074-9615-deea0753e2f7.png">
+
 
 ## Study Design: MechaCar vs Competition
+
+The above statistical analysis is most useful for internal applications, especially in assisting the manufacturing team meet their production deadlines. However, the average consumer will not be interested in a statistical analysis based on PSI data. In order to expand the application of R and statistical analysis to assist AutosRUs in applealing to consumers, a further report is recommended which compares MechaCar data with its competitors for highway fuel efficiency. 
+
+For this proposed study design, the null hypothesis assumes the MechaCar has a mean of 40 miles per gallon highway. To test this, we would calculate the mean miles per gallon highway reported for all of the MechaCar prototypes. We would then compare the result of this calculation to 40, the assumed, or claimed, mean using the resulting p-values of one-sample t.test to accept or reject the null hypothesis.
+
+Similarly, using a one-sample t.test, it would be possible to determine how the MechaCar's highway fuel efficiency differs statistically from its competition. The data for this test would be a data set consistenting of reported highway miles per gallon, or highway fuel efficiency, for the MechaCar and its competitors.
